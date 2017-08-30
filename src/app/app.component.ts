@@ -7,8 +7,15 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  studentCollection: Array<object> = [];
+ studentCollection: Array<object> = [];
   studentRecord: object;
+
+  studNo: number;
+  studFname: string;
+  studLname: string;
+  studProg: string;
+  studYr: number;
+
   messages = '';
   printing = false;
 
@@ -31,7 +38,13 @@ export class AppComponent {
       this.checkPatterns(this.studProg, stringPattern) &&
       this.checkPatterns(this.studYr, studYearPattern)) {
 
-    
+        this.studentRecord = {
+          studNumber: this.studNo,
+          studFirstName: this.studFname,
+          studLastName: this.studLname,
+          studProgram: this.studProg,
+          studYear: this.studYr
+        };
         this.studentCollection.push(this.studentRecord);
         this.messages = null;
         this.clearValues();
@@ -54,4 +67,5 @@ export class AppComponent {
     this.studProg = null;
     this.studYr = null;
   }
+}
 }
